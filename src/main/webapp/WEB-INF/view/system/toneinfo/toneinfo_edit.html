@@ -1,0 +1,30 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="id" name="主键id" value="${item.id}" underline="true" disabled="disabled"/>
+                            <#input id="songId" name="歌曲id" value="${item.songId}" underline="true"/>
+                            <#input id="songName" name="歌曲名称" value="${item.songName}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="singerName" name="歌手名称" value="${item.singerName}" underline="true"/>
+                            <#input id="createtime" name="创建时间" value="${item.createtime}" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="ToneinfoInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="ToneinfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/toneinfo/toneinfo_info.js"></script>
+@}

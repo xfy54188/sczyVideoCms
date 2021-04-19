@@ -1,0 +1,5 @@
+https://c.musicapp.migu.cn/MIGUM2.0/v1.0/content/resourceinfo.do?needSimple=01&resourceId=600926000001741262&resourceType=M
+取mapImg 下面
+"9:16": [
+{
+"imgSizeType": "03",

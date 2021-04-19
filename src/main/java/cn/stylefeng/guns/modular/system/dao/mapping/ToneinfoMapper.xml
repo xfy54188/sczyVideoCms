@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.system.dao.ToneinfoMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap"
+		type="cn.stylefeng.guns.modular.system.model.Toneinfo">
+		<id column="id" property="id" />
+		<result column="songId" property="songId" />
+		<result column="songName" property="songName" />
+		<result column="singerName" property="singerName" />
+		<result column="createtime" property="createtime" />
+	</resultMap>
+
+	<!-- 通用查询结果列 -->
+	<sql id="Base_Column_List">
+		id, songId, songName, singerName, createtime
+	</sql>
+	<select id="list" resultType="map">
+		select * from sys_toneinfo
+		<if test="condition != null and condition != ''">
+			where songName like CONCAT('%',#{condition},'%') or
+			singerName like
+			CONCAT('%',#{condition},'%') or songId like
+			CONCAT('%',#{condition},'%')
+		</if>
+		order by id ASC
+	</select>
+	<insert id="addToneinfo" parameterType="cn.stylefeng.guns.modular.system.model.Toneinfo">
+		insert into
+		sys_toneinfo
+		(songId,songName,singerName,createtime)
+		values
+
+		(
+		#{songId},
+		#{songName},
+		#{singerName},
+		#{createtime}
+		)
+	</insert>
+
+	<update id="updateToneinfoBySongId" parameterType="cn.stylefeng.guns.modular.system.model.Toneinfo">
+		update
+		sys_toneinfo
+		set
+		songId=#{songId},
+		songName=#{songName},
+		singerName=#{singerName},
+		createtime=#{createtime}
+		where songId =#{songId}
+	</update>
+
+	<select id="selectBySongId" resultType="java.lang.Integer">
+		SELECT
+		count(*)
+		FROM
+		sys_toneinfo
+		WHERE songId=#{songId}
+	</select>
+</mapper>
